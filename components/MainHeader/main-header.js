@@ -1,9 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import logoImg from '../assets/logo.png';
+import logoImg from '@/assets/logo.png';
 import classes from './main-header.module.css';
-import MainHeaderBackground from "./MainHeaderBackground";
+import MainHeaderBackground from "./main-header-background";
 
 export const MainHeader = () => {
   return (
