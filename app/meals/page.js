@@ -1,12 +1,29 @@
 import Link from "next/link";
 
-export default function MealsPage() {
+import styles from './page.module.css';
+import { MealsGrid } from "@/components/meals/meals-grid";
+import { getMeals } from "@/lib/meals";
+
+export default async function MealsPage() {
+
+  const meals = await getMeals();
+
   return (
-    <main>
-      <h1>Meals Page</h1>
-      <Link href="/meals/share">Share Page</Link>
-      <br />
-      <Link href="/meals/dynamic">Dynamic Page</Link>
-    </main>
-  )
+    <>
+      <header className={ styles.header}>
+        <h1>Delicious meals, created {' '}
+          <span className={styles.highlight}>by you</span>
+        </h1>
+        <p>Choose your favorite recipe and cook it yourself. It is easy and fun!</p>
+        <p className={styles.cta}>
+          <Link href="/meals/share">
+            Share Your Favorite Recipe
+          </Link>
+        </p>
+      </header>
+      <main>
+        <MealsGrid meals={meals}/>
+      </main>
+    </>
+  );
 }
