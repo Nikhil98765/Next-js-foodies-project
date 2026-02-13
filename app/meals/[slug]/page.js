@@ -1,10 +1,17 @@
 import Image from 'next/image';
 import styles from './page.module.css';
 import { getMeal } from '@/lib/meals';
+import { notFound } from 'next/navigation';
 
 export default async function MealDetailPage({ params }) {
   const { slug } = await params;
-  const { title, image, summary, instructions, creator, creator_email } = getMeal(slug);
+  const meal = getMeal(slug);
+
+  if (!meal) {
+    notFound();
+  }
+
+  const { title, image, summary, instructions, creator, creator_email } = meal;
 
   return (
     <>
