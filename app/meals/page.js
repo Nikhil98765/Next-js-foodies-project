@@ -7,10 +7,14 @@ import { Suspense } from "react";
 
 export const Meals = async () => {
   const meals = await getMeals();
-  console.log("🚀 ~ Meals")
 
   return <MealsGrid meals={meals} />;
 }
+
+export const metadata = {
+  title: "All Meals",
+  description: "Delicious meals, shared by a food-loving community 12344.",
+};
 
 export default async function MealsPage() {
 
